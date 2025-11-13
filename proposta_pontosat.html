@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta de Trabalho - Pontosat Internet</title>
+    <style>
+        @media print {
+            body { margin: 0; }
+            .page-break { page-break-after: always; }
+            .print-button, .accept-button, .modal { display: none !important; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm;
+            background: white;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #4A90E2;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+        }
+        
+        .company-info h2 {
+            color: #4A90E2;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .company-info p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .date-box {
+            text-align: right;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        h1 {
+            color: #2C3E50;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7F8C8D;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, #4A90E2, #50C878, #FF6B6B);
+            margin: 25px 0;
+        }
+        
+        h3 {
+            color: #4A90E2;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #E8F4F8;
+        }
+        
+        .client-box {
+            background: #F8F9FA;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #4A90E2;
+        }
+        
+        .client-box strong {
+            color: #2C3E50;
+            font-size: 20px;
+        }
+        
+        .developer-box {
+            background: #E8F8F5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #27AE60;
+        }
+        
+        .developer-box strong {
+            color: #2C3E50;
+            font-size: 20px;
+        }
+        
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-table th {
+            background: #4A90E2;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .pricing-table td {
+            padding: 15px;
+            border-bottom: 1px solid #E8E8E8;
+        }
+        
+        .pricing-table tr:nth-child(even) {
+            background: #F8F9FA;
+        }
+        
+        .highlight-price {
+            background: #E8F8F5 !important;
+            font-weight: bold;
+            color: #27AE60;
+            font-size: 18px;
+        }
+        
+        .special-offer {
+            background: #FFF9E6;
+            border-left: 4px solid #F39C12;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        .special-offer strong {
+            color: #E67E22;
+            font-size: 18px;
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: #F8F9FA;
+            border-radius: 5px;
+        }
+        
+        .benefit-item::before {
+            content: "✓";
+            color: #27AE60;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #E8E8E8;
+            text-align: center;
+            color: #7F8C8D;
+            font-size: 14px;
+        }
+        
+        .contact-info {
+            background: #F8F9FA;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+            z-index: 1000;
+        }
+        
+        .print-button:hover {
+            background: #357ABD;
+        }
+        
+        .accept-button {
+            display: block;
+            margin: 40px auto;
+            background: #27AE60;
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 6px 16px rgba(39, 174, 96, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .accept-button:hover {
+            background: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.5);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.5s;
+        }
+        
+        .modal-content h2 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-content p {
+            color: white;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .celebration {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .close-modal {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Imprimir / Salvar PDF</button>
+    
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwLBdb8NULiTxSXmBSbEoOfIN9HLOek2_jxg&s" alt="Pontosat Logo" class="logo">
+                <div class="company-info">
+                    <h2>Pontosat Internet</h2>
+                </div>
+            </div>
+        </div>
+        
+        <h1>PROPOSTA DE PRESTAÇÃO DE SERVIÇOS</h1>
+        <p class="subtitle">Desenvolvimento Full Stack por Hora</p>
+        
+        <div class="divider"></div>
+        
+        <div class="developer-box">
+            <strong>Desenvolvedor:</strong> Caio Henrique May Mendes
+        </div>
+        
+        <h3>📋 OBJETO DA PROPOSTA</h3>
+        <p>Prestação de serviços de desenvolvimento full stack, trabalhando por demanda conforme necessidades dos projetos da Pontosat Internet.</p>
+        
+        <h3>💻 ESCOPO DE SERVIÇOS</h3>
+        <p>Como desenvolvedor full stack, ofereço os seguintes serviços:</p>
+        <ul>
+            <li><strong>Front-end:</strong> Desenvolvimento de interfaces responsivas e modernas com as melhores tecnologias do mercado</li>
+            <li><strong>Back-end:</strong> Criação e manutenção de APIs robustas e lógica de servidor eficiente</li>
+            <li><strong>Banco de Dados:</strong> Modelagem, implementação e otimização de estruturas de dados</li>
+            <li><strong>Integração:</strong> Conexão entre sistemas internos e serviços externos</li>
+            <li><strong>Manutenção:</strong> Correção de bugs e implementação de melhorias contínuas</li>
+            <li><strong>Documentação:</strong> Código limpo, organizado e bem documentado</li>
+        </ul>
+        
+        <h3>💰 INVESTIMENTO</h3>
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th style="text-align: right;">Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Valor de Mercado (por hora)</td>
+                    <td style="text-align: right;">R$ 35,74</td>
+                </tr>
+                <tr class="highlight-price">
+                    <td><strong>Valor Proposto (por hora)</strong></td>
+                    <td style="text-align: right;"><strong>R$ 25,00</strong></td>
+                </tr>
+                <tr>
+                    <td>Desconto Aplicado</td>
+                    <td style="text-align: right; color: #27AE60; font-weight: bold;">30%</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="special-offer">
+            <strong>💡 Proposta Especial:</strong> Estou oferecendo um valor promocional de <strong>R$ 25,00/hora</strong> para os projetos da Pontosat Internet, representando uma economia de <strong>30%</strong> em relação ao meu valor de mercado habitual.
+        </div>
+        <h3><strong> Estes valores são somente uma proposta inicial podendo ser alteradas conforme necessidade.</strong></h3>
+        
+        <h3>📊 FORMA DE CONTRATAÇÃO</h3>
+        <ul>
+            <li><strong>Modelo:</strong> Por hora trabalhada</li>
+            <li><strong>Registro:</strong> Controle de horas via ferramenta de time tracking (Toggl, Clockify ou similar) ou sistema de ponto interno.</li>
+        </ul>
+        
+        <h3>⭐ DIFERENCIAIS</h3>
+        <div class="benefits">
+            <div class="benefit-item">Experiência em desenvolvimento full stack</div>
+            <div class="benefit-item">Código limpo e boas práticas</div>
+            <div class="benefit-item">Comunicação clara e objetiva</div>
+            <div class="benefit-item">Flexibilidade de horários</div>
+            <div class="benefit-item">Comprometimento com prazos</div>
+            <div class="benefit-item">Disponibilidade para reuniões</div>
+            <div class="benefit-item">Conhecimento das regras de negócio e ideais da empresa</div>
+
+        </div>
+        
+        <h3>📌 OBSERVAÇÕES IMPORTANTES</h3>
+        <ul>
+            <li>As horas trabalhadas serão registradas e compartilhadas com a equipe da Pontosat</li>
+            <li>Disponibilidade para discussão de escopo e definição de prioridades</li>
+            <li>Possibilidade de ajuste do modelo de contratação conforme evolução dos projetos</li>
+            <li>Compromisso com a qualidade e com os objetivos da Pontosat Internet</li>
+        </ul>
+        
+        <div class="divider"></div>
+        
+        <button class="accept-button" onclick="openModal()">🤝 Negócio Fechado</button>
+        
+        <div class="footer">
+            <p><em>Estou à disposição para esclarecer quaisquer dúvidas e discutir os detalhes dos projetos.</em></p>
+            <div class="contact-info">
+                <strong>Contato:</strong><br>
+                📧 E-mail: caioh.maymendes@gmail.com<br>
+                📱 Telefone: (48) 99812-7252
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="celebration">🎉🎊🥳</div>
+            <h2>Negócio Fechado! 🚀</h2>
+            <p>
+                Muito obrigado por confiar no meu trabalho! 🙌<br><br>
+                Estou super empolgado para continuar essa parceria e entregar projetos incríveis para a Pontosat Internet! 💻✨<br><br>
+                Vamos fazer acontecer juntos! 💪🔥
+            </p>
+            <button class="close-modal" onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+    
+    <script>
+        async function openModal() {
+            const button = document.querySelector('.accept-button');
+            button.disabled = true;
+            button.textContent = '📤 Enviando...';
+            
+            try {
+                // Envia requisição para o backend
+                const response = await fetch('https://api-fv25.onrender.com/send-sms', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: '!'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    document.getElementById('modal').style.display = 'block';
+                } else {
+                    alert('Erro ao enviar SMS: ' + data.error);
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao conectar com o servidor. Verifique se o backend está rodando.');
+            } finally {
+                button.disabled = false;
+                button.textContent = '🤝 Negócio Fechado';
+            }
+        }
+        
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
